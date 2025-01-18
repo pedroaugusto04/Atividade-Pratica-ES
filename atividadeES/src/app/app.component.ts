@@ -5,7 +5,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import { AppServiceService } from './services/app-service.service';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 
@@ -20,21 +20,30 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 export class AppComponent {
   title = 'atividadeES';
   searchQuery: string = "";
-  searchForm: FormGroup;
   artigos$!: Observable<any>;
+  artigosFiltrados$!: Observable<any>;
 
-  constructor(private fb: FormBuilder, private appService: AppServiceService, private snackBar: MatSnackBar) {
-    this.searchForm = this.fb.group({
-      palavrasChave: [''],
-      autor: [''],
-      ano: [null],
-      curso: [''],
-      tipo: [''],
-      status: [''],
-    });
+  constructor(private appService: AppServiceService, private snackBar: MatSnackBar) {}
+
+  ngOnInit(): void {
+    this.artigos$ = this.appService.onSearch();
   }
 
   onSearch(): void {
-    this.artigos$ = this.appService.onSearch();
+    this.artigosFiltrados$ = this.artigos$.pipe(
+      map((artigos: any[]) => this.filtrarArtigos(artigos, this.searchQuery.trim()))
+    );
+  }
+
+  filtrarArtigos(artigos: any[], searchQuery: string): any[] {
+    return artigos.filter(artigo => {
+      const queryMatch = searchQuery
+        ? (artigo.name.toLowerCase().includes(searchQuery.toLowerCase())) ||
+          (artigo.body.toLowerCase().includes(searchQuery.toLowerCase())) ||
+          (artigo.email.toLowerCase().includes(searchQuery.toLowerCase()))
+        : true;
+      
+      return queryMatch;
+    });
   }
 }

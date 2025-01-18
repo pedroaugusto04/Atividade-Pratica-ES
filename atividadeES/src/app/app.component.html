@@ -4,7 +4,6 @@
         type="text" 
         placeholder="Buscar Artigos" 
         [(ngModel)]="searchQuery" 
-        (input)="onSearch()"
         class="search-input"
       />
       <button (click)="onSearch()" class="search-button">
@@ -13,7 +12,7 @@
     </div>
 </section>
 <main>
-  <div class="artigo-field" *ngIf="artigos$ | async as artigos">
+  <div class="artigo-field" *ngIf="artigosFiltrados$ | async as artigos">
     <div class="artigo-list">
       <div class="artigo-card" *ngFor="let artigo of artigos">
         <h3>{{ artigo.name }}</h3>
