@@ -13,13 +13,13 @@
     </div>
 </section>
 <main>
-    <div *ngIf="artigos$ | async as artigos;">
-        <div *ngFor="let artigo of artigos">
-          <div class="artigo-card">
-            <h3>{{ artigo.name }}</h3>
-            <p>{{ artigo.body }}</p>
-            <p>{{artigo.email}}</p>
-          </div>
-        </div>
+  <div class="artigo-field" *ngIf="artigos$ | async as artigos">
+    <div class="artigo-list">
+      <div class="artigo-card" *ngFor="let artigo of artigos">
+        <h3>{{ artigo.name }}</h3>
+        <p>{{ artigo.body }}</p>
+        <p>{{ artigo.email }}</p>
       </div>
+    </div>
+  </div>
 </main>

@@ -7,12 +7,13 @@ import { CommonModule } from '@angular/common';
 import { AppServiceService } from './services/app-service.service';
 import { Observable } from 'rxjs';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 
 
 @Component({
   selector: 'app-root',
-  imports: [ReactiveFormsModule,MatInputModule,MatButtonModule,MatSelectModule, CommonModule, MatSnackBarModule, FormsModule],
+  imports: [ReactiveFormsModule,ScrollingModule,MatInputModule,MatButtonModule,MatSelectModule, CommonModule, MatSnackBarModule, FormsModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

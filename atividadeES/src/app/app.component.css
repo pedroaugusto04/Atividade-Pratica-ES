@@ -1,37 +1,127 @@
 .search-container {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 1rem;
-  }
+  width: 100%;
+  display: flex;
+  text-align: center;
+  flex-flow: row;
+  justify-content: center;  
+  align-items: center;
+  padding: 1rem;
+}
+
+.search-bar {
+  display: flex;
+  border: 0.063rem solid #ccc;
+  border-radius: 1.5rem;
+  padding: 0.2rem;
+  width: 30%;
+}
+
+.artigo-card{
+  padding-left: 2rem;
   
-  .search-bar {
-    display: flex;
-    border: 1px solid #ccc;
-    border-radius: 24px;
-    padding: 0.2rem;
-    width: 30%;
-  }
-  
-  .search-input {
-    border: none;
-    outline: none;
-    padding: 8px;
-    width: 90%;
-    font-size: 16px;
-    border-radius: 24px;
-  }
-  
-  .search-button {
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 8px;
-    margin-left: 8px;
-  }
-  
-  .material-icons {
-    font-size: 24px;
-    color: #888;
-  }
-  
+}
+
+.search-input {
+  border: none;
+  outline: none;
+  padding: 0.8rem;
+  width: 90%;
+  font-size: 1rem;
+  border-radius: 1.5rem;
+}
+
+.search-button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  margin-left: 0.5rem;
+}
+
+.material-icons {
+  font-size: 1.5rem;
+  color: #888;
+}
+.artigo-field {
+  width: 100%;
+  max-width: 80%; /* Limite de largura relativo */
+  height: 100%; /* Ocupa toda a altura do main */
+  padding: 2rem;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
+  background: #f9f9f9;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+.example-viewport {
+  height: 100%;
+  width: 12.5rem;
+  border: 0.063rem solid black;
+}
+main {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  height: 80%;
+  padding-top: 1rem;
+  box-sizing: border-box;
+  padding-bottom: 3rem;
+  margin-bottom: 3rem;
+}
+
+.example-item {
+  height: 3.125rem;
+}
+.artigo-list {
+  max-height: 100%; /* Altura máxima relativa */
+  overflow-y: auto;
+  padding-right: 1rem;
+  scrollbar-width: auto; /* Largura padrão para navegadores compatíveis */
+  scrollbar-color: #ccc transparent;
+}
+
+
+.artigo-list::-webkit-scrollbar {
+  width: 1.2rem;
+}
+
+.artigo-list::-webkit-scrollbar-thumb {
+  background: #aaa; /* Cor da barra de rolagem */
+  border-radius: 0.6rem; /* Bordas arredondadas */
+  border: 0.3rem solid #f9f9f9; /* Adiciona um espaçamento interno com a cor do fundo */
+}
+
+.artigo-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Estilos para cada artigo */
+.artigo-card {
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  border: 0.1rem solid #e0e0e0;
+  border-radius: 0.4rem;
+  background: #fff;
+  box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.1);
+}
+
+.artigo-card h3 {
+  margin: 0 0 0.8rem;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.artigo-card p {
+  margin: 0.4rem 0;
+  color: #555;
+  font-size: 1rem;
+}
+.artigo-field{
+  height: 100%;
+  padding-bottom: 3rem;
+  margin-bottom: 3rem;
+}
+@media (max-width: 56rem) {
+
+}

@@ -9,18 +9,32 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 
 header {
-    width: 100%;
-    background-color: #1976d2; 
-    color: white;
-    padding: 1rem;
-    text-align: center;
-    height: 2rem;
+  display: flex;
+  width: 100%;
+  background-color: #1976d2; 
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  display: flex;
+  flex-flow: row;
+  justify-content: center;  
+  align-items: center;
+  height: 2rem;
 }
-
+.material-icons{
+  font-size: 3rem;
+  padding-right: 1rem;
+}
 header h1 {
-    margin: 0;
-    font-size: 2rem;
-    padding-right: 1.5rem;
+  display: flex;
+  margin: 0rem;
+  margin-top: 0rem;
+  font-size: 2rem;
+  padding-right: 1.5rem;
+  padding-top: 0rem;
+  text-align: center;
+  align-items: center;
+  align-content: center;
 }
 
 footer {
@@ -43,4 +57,12 @@ footer {
         color: white !important;
       }
     }
+}
+
+@media (max-width: 38rem) {
+header{
+  text-align: center;
+  align-content: center;
+  align-items: center;
+}
 }
