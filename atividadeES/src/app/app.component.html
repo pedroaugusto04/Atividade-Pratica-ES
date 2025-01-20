@@ -1,25 +1,25 @@
 <section class="search-container">
-    <div class="search-bar">
-      <input 
-        type="text" 
-        placeholder="Buscar Artigos" 
-        [(ngModel)]="searchQuery" 
-        class="search-input"
-      />
-      <button (click)="onSearch()" class="search-button">
-        <i class="material-icons">search</i>
-      </button>
-    </div>
+  <div class="search-bar">
+    <input 
+      type="text" 
+      placeholder="Buscar Artigos" 
+      [(ngModel)]="searchQuery" 
+      class="search-input"
+      (keydown.enter)="onSearch()"
+    />
+    <button (click)="onSearch()" class="search-button">
+      <i class="material-icons">search</i>
+    </button>
+  </div>
 </section>
 <main>
-  <div class="artigo-field" *ngIf="artigosFiltrados$ | async as artigos">
-    <div class="artigo-list">
-      <div class="artigo-card" *ngFor="let artigo of artigos">
-        <h3>{{ artigo.name }}</h3>
-        <p>{{ artigo.body }}</p>
-        <p>{{ artigo.email }}</p>
-      </div>
+<div class="artigo-field" *ngIf="artigosFiltrados$ | async as artigos">
+  <div class="artigo-list">
+    <div class="artigo-card" *ngFor="let artigo of artigos">
+      <h3>{{ artigo.name }}</h3>
+      <p>{{ artigo.body }}</p>
+      <p>{{ artigo.email }}</p>
     </div>
   </div>
+</div>
 </main>
-  

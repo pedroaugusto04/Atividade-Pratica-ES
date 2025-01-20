@@ -31,19 +31,27 @@ export class AppComponent {
 
   onSearch(): void {
     this.artigosFiltrados$ = this.artigos$.pipe(
-      map((artigos: any[]) => this.filtrarArtigos(artigos, this.searchQuery.trim()))
+      map((artigos: any[]) => this.filtrarArtigos(artigos, this.searchQuery))
     );
   }
 
   filtrarArtigos(artigos: any[], searchQuery: string): any[] {
     return artigos.filter(artigo => {
       const queryMatch = searchQuery
-        ? (artigo.name.toLowerCase().includes(searchQuery.toLowerCase())) ||
-          (artigo.body.toLowerCase().includes(searchQuery.toLowerCase())) ||
-          (artigo.email.toLowerCase().includes(searchQuery.toLowerCase()))
+        ? (this.formatarTexto(artigo.name).includes(this.formatarTexto(searchQuery))) ||
+          (this.formatarTexto(artigo.body).includes(this.formatarTexto(searchQuery))) ||
+          (this.formatarTexto(artigo.email).includes(this.formatarTexto(searchQuery)))
         : true;
       
       return queryMatch;
     });
+  }
+
+  formatarTexto(text: string): string {
+    if (!text) return ''; 
+    return text
+      .toLowerCase() 
+      .replace(/\s+/g, ' ') // substitui multiplos espacamentos por apenas um
+      .trim();
   }
 }
