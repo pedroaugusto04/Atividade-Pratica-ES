@@ -27,6 +27,7 @@ export class AppComponent {
 
   ngOnInit(): void {
     this.artigos$ = this.appService.onSearch();
+    this.onSearch();
   }
 
   onSearch(): void {

@@ -4,10 +4,10 @@
       type="text" 
       placeholder="Buscar Artigos" 
       [(ngModel)]="searchQuery" 
-      class="search-input"
-      (keydown.enter)="onSearch()"
+      (input)="onSearch()"
+      class="search-input"        
     />
-    <button (click)="onSearch()" class="search-button">
+    <button class="search-button">
       <i class="material-icons">search</i>
     </button>
   </div>
