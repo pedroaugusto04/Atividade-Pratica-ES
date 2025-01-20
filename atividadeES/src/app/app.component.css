@@ -122,6 +122,13 @@ main {
   padding-bottom: 3rem;
   margin-bottom: 3rem;
 }
-@media (max-width: 56rem) {
+@media (max-width: 40rem) {
+.search-container{
+  align-items: center;
+  width: 100%;
+}
 
+.search-bar{
+  width: 80%;
+}
 }
