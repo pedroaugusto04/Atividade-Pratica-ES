@@ -3,7 +3,7 @@
   display: flex;
   text-align: center;
   flex-flow: row;
-  justify-content: center;  
+  justify-content: center;
   align-items: center;
   padding: 1rem;
 }
@@ -18,7 +18,7 @@
 
 .artigo-card{
   padding-left: 2rem;
-  
+
 }
 
 .search-input {
@@ -125,7 +125,7 @@ main {
 
 .paginacao {
   display: flex;
-  justify-content: flex-end; 
+  justify-content: flex-end;
   align-items: center;
 }
 
@@ -138,4 +138,24 @@ main {
 .search-bar{
   width: 80%;
 }
+}
+@media (max-width: 30rem){
+  .artigo-card h3{
+    font-size: 1.2rem;
+  }
+  .artigo-card p{
+    font-size: 0.8rem;
+  }
+  .artigo-card{
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
+  }
+  .artigo-list{
+    padding-right: 2rem;
+    margin-left: 0rem;
+  }
+  .paginacao{
+    width: 100%;
+  }
+
 }
