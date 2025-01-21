@@ -78,21 +78,6 @@ footer p {
   font-size: 0.875rem;
 }
 
-.footer-links {
-  display: flex;
-  gap: 1rem;
-}
-
-.footer-links a {
-  color: white;
-  text-decoration: none;
-  font-size: 0.875rem;
-}
-
-.footer-links a:hover {
-  text-decoration: underline;
-}
-
 @media (max-width: 38rem) {
 header{
   text-align: center;
