@@ -39,10 +39,17 @@ export class AppComponent {
       map((artigos: any[]) => {
         const artigosFiltrados = this.filtrarArtigos(artigos, this.searchQuery);
         this.totalPaginas = Math.ceil(artigosFiltrados.length / this.artigosPorPagina);
+        /* ajuste para voltar para a pagina inicial quando o numero de paginas carregado 
+        for menor que o numero da pagina atual*/
+        if (this.paginaAtual > this.totalPaginas) {
+          this.paginaAtual = 1; 
+        }
+        
         return this.paginarArtigos(artigosFiltrados, this.paginaAtual);
       })
     );
   }
+  
 
   paginarArtigos(artigos: any[], pagina: number): any[] {
     const inicio = (pagina - 1) * this.artigosPorPagina;
