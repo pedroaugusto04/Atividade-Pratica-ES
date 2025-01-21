@@ -122,6 +122,13 @@ main {
   padding-bottom: 3rem;
   margin-bottom: 3rem;
 }
+
+.paginacao {
+  display: flex;
+  justify-content: flex-end; 
+  align-items: center;
+}
+
 @media (max-width: 40rem) {
 .search-container{
   align-items: center;

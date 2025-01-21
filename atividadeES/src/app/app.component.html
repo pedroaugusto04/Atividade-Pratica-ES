@@ -1,3 +1,4 @@
+<!-- Pesquisa -->
 <section class="search-container">
   <div class="search-bar">
     <input 
@@ -5,21 +6,44 @@
       placeholder="Buscar Artigos" 
       [(ngModel)]="searchQuery" 
       (input)="onSearch()"
-      class="search-input"        
+      class="search-input"
     />
     <button class="search-button">
       <i class="material-icons">search</i>
     </button>
   </div>
 </section>
+
 <main>
-<div class="artigo-field" *ngIf="artigosFiltrados$ | async as artigos">
-  <div class="artigo-list">
-    <div class="artigo-card" *ngFor="let artigo of artigos">
-      <h3>{{ artigo.name }}</h3>
-      <p>{{ artigo.body }}</p>
-      <p>{{ artigo.email }}</p>
+  <!-- Listagem dos artigos -->
+  <div class="artigo-field" *ngIf="artigosFiltrados$ | async as artigos">
+    <div class="artigo-list">
+      <div class="artigo-card" *ngFor="let artigo of artigos">
+        <h3>{{ artigo.name }}</h3>
+        <p>{{ artigo.body }}</p>
+        <p>{{ artigo.email }}</p>
+      </div>
+    </div>
+
+    <!-- Paginacao -->
+    <div class="paginacao" *ngIf="artigos.length > 0">
+      <button 
+        mat-button 
+        class="botao-pagina-anterior" 
+        (click)="paginaAnterior()" 
+        [disabled]="paginaAtual === 1">
+        Anterior
+      </button>
+      <span class="info-paginacao">
+        Página {{paginaAtual}} de {{totalPaginas}}
+      </span>
+      <button 
+        mat-button 
+        class="botao-proxima-pagina" 
+        (click)="proximaPagina()" 
+        [disabled]="paginaAtual === totalPaginas">
+        Próxima
+      </button>
     </div>
   </div>
-</div>
 </main>

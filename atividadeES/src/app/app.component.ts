@@ -22,6 +22,10 @@ export class AppComponent {
   searchQuery: string = "";
   artigos$!: Observable<any>;
   artigosFiltrados$!: Observable<any>;
+  // paginacao
+  paginaAtual: number = 1;
+  artigosPorPagina:  number = 10;
+  totalPaginas: number = 0;
 
   constructor(private appService: AppServiceService, private snackBar: MatSnackBar) {}
 
@@ -32,8 +36,18 @@ export class AppComponent {
 
   onSearch(): void {
     this.artigosFiltrados$ = this.artigos$.pipe(
-      map((artigos: any[]) => this.filtrarArtigos(artigos, this.searchQuery))
+      map((artigos: any[]) => {
+        const artigosFiltrados = this.filtrarArtigos(artigos, this.searchQuery);
+        this.totalPaginas = Math.ceil(artigosFiltrados.length / this.artigosPorPagina);
+        return this.paginarArtigos(artigosFiltrados, this.paginaAtual);
+      })
     );
+  }
+
+  paginarArtigos(artigos: any[], pagina: number): any[] {
+    const inicio = (pagina - 1) * this.artigosPorPagina;
+    const fim = inicio + this.artigosPorPagina;
+    return artigos.slice(inicio, fim);
   }
 
   filtrarArtigos(artigos: any[], searchQuery: string): any[] {
@@ -55,4 +69,26 @@ export class AppComponent {
       .replace(/\s+/g, ' ') // substitui multiplos espacamentos por apenas um
       .trim();
   }
+
+  proximaPagina(): void {
+    if (this.paginaAtual < this.totalPaginas) {
+      this.irParaPagina(this.paginaAtual + 1);
+    }
+  }
+
+  paginaAnterior(): void {
+    if (this.paginaAtual > 1) {
+      this.irParaPagina(this.paginaAtual - 1);
+    }
+  }
+
+  irParaPagina(pagina: number): void {
+    if (pagina < 1 || pagina > this.totalPaginas) {
+      this.snackBar.open('Página inválida', 'X', { duration: 2000 });
+      return;
+    }
+    this.paginaAtual = pagina;
+    this.onSearch(); 
+  }
+  
 }
