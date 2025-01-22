@@ -35,16 +35,16 @@ export class AppComponent {
   }
 
   onSearch(): void {
+    // apos a busca, sempre retorna para a primeira pagina
+    this.paginaAtual = 1;
+
     this.artigosFiltrados$ = this.artigos$.pipe(
       map((artigos: any[]) => {
+        // filtra os artigos com base no valor digitado
         const artigosFiltrados = this.filtrarArtigos(artigos, this.searchQuery);
+        // verifica o total de paginas para dividir na paginacao
         this.totalPaginas = Math.ceil(artigosFiltrados.length / this.artigosPorPagina);
-        /* ajuste para voltar para a pagina inicial quando o numero de paginas carregado 
-        for menor que o numero da pagina atual*/
-        if (this.paginaAtual > this.totalPaginas) {
-          this.paginaAtual = 1; 
-        }
-        
+        // mostra os artigos da pagina desejada
         return this.paginarArtigos(artigosFiltrados, this.paginaAtual);
       })
     );
@@ -95,7 +95,14 @@ export class AppComponent {
       return;
     }
     this.paginaAtual = pagina;
-    this.onSearch(); 
-  }
   
+    this.artigosFiltrados$ = this.artigos$.pipe(
+      map((artigos: any[]) => {
+        // filtra os artigos com base no valor digitado
+        const artigosFiltrados = this.filtrarArtigos(artigos, this.searchQuery);
+        // mostra os artigos da pagina desejada
+        return this.paginarArtigos(artigosFiltrados, this.paginaAtual);
+      })
+    );
+  }
 }
