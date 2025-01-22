@@ -140,6 +140,19 @@ main {
 }
 }
 @media (max-width: 30rem){
+  .paginacao {
+    flex-direction: column; /* Coloca os itens em coluna */
+    gap: 5px;
+  }
+
+  .info-paginacao {
+    font-size: 14px; /* Reduz o tamanho do texto */
+  }
+
+  .botao-pagina-anterior, 
+  .botao-proxima-pagina {
+    min-width: 80px; /* Ajusta a largura dos botões */
+  }
   .artigo-card h3{
     font-size: 1.2rem;
   }

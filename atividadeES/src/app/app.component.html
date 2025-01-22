@@ -23,27 +23,28 @@
         <p>{{ artigo.body }}</p>
         <p>{{ artigo.email }}</p>
       </div>
+ <!-- Paginacao -->
+ <div class="paginacao" *ngIf="artigos.length > 0">
+  <button 
+    mat-button 
+    class="botao-pagina-anterior" 
+    (click)="paginaAnterior()" 
+    [disabled]="paginaAtual === 1">
+    Anterior
+  </button>
+  <span class="info-paginacao">
+    Página {{paginaAtual}} de {{totalPaginas}}
+  </span>
+  <button 
+    mat-button 
+    class="botao-proxima-pagina" 
+    (click)="proximaPagina()" 
+    [disabled]="paginaAtual === totalPaginas">
+    Próxima
+  </button>
+</div>
     </div>
 
-    <!-- Paginacao -->
-    <div class="paginacao" *ngIf="artigos.length > 0">
-      <button 
-        mat-button 
-        class="botao-pagina-anterior" 
-        (click)="paginaAnterior()" 
-        [disabled]="paginaAtual === 1">
-        Anterior
-      </button>
-      <span class="info-paginacao">
-        Página {{paginaAtual}} de {{totalPaginas}}
-      </span>
-      <button 
-        mat-button 
-        class="botao-proxima-pagina" 
-        (click)="proximaPagina()" 
-        [disabled]="paginaAtual === totalPaginas">
-        Próxima
-      </button>
-    </div>
+   
   </div>
 </main>
