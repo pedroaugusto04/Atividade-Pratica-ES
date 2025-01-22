@@ -44,8 +44,8 @@
 }
 .artigo-field {
   width: 100%;
-  max-width: 80%; /* Limite de largura relativo */
-  height: 100%; /* Ocupa toda a altura do main */
+  max-width: 80%; 
+  height: 100%; 
   padding: 2rem;
   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
   border-radius: 0.5rem;
@@ -74,10 +74,10 @@ main {
   height: 3.125rem;
 }
 .artigo-list {
-  max-height: 100%; /* Altura máxima relativa */
+  max-height: 100%;
   overflow-y: auto;
   padding-right: 1rem;
-  scrollbar-width: auto; /* Largura padrão para navegadores compatíveis */
+  scrollbar-width: auto; 
   scrollbar-color: #ccc transparent;
 }
 
@@ -87,16 +87,15 @@ main {
 }
 
 .artigo-list::-webkit-scrollbar-thumb {
-  background: #aaa; /* Cor da barra de rolagem */
-  border-radius: 0.6rem; /* Bordas arredondadas */
-  border: 0.3rem solid #f9f9f9; /* Adiciona um espaçamento interno com a cor do fundo */
+  background: #aaa; 
+  border-radius: 0.6rem; 
+  border: 0.3rem solid #f9f9f9;
 }
 
 .artigo-list::-webkit-scrollbar-track {
   background: transparent;
 }
 
-/* Estilos para cada artigo */
 .artigo-card {
   padding: 1.5rem;
   margin-bottom: 1rem;
@@ -141,17 +140,17 @@ main {
 }
 @media (max-width: 30rem){
   .paginacao {
-    flex-direction: column; /* Coloca os itens em coluna */
+    flex-direction: column; 
     gap: 5px;
   }
 
   .info-paginacao {
-    font-size: 14px; /* Reduz o tamanho do texto */
+    font-size: 14px; 
   }
 
   .botao-pagina-anterior, 
   .botao-proxima-pagina {
-    min-width: 80px; /* Ajusta a largura dos botões */
+    min-width: 80px; 
   }
   .artigo-card h3{
     font-size: 1.2rem;

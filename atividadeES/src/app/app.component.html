@@ -3,7 +3,7 @@
   <div class="search-bar">
     <input 
       type="text" 
-      placeholder="Buscar Artigos" 
+      placeholder="Buscar Artigos (Título, Corpo, Autor ou Email)" 
       [(ngModel)]="searchQuery" 
       (input)="onSearch()"
       class="search-input"
@@ -24,7 +24,7 @@
         <p>{{ artigo.email }}</p>
       </div>
  <!-- Paginacao -->
- <div class="paginacao" *ngIf="artigos.length > 0">
+ <div class="paginacao" *ngIf="artigos.length > 0; else semArtigos">
   <button 
     mat-button 
     class="botao-pagina-anterior" 
@@ -43,6 +43,9 @@
     Próxima
   </button>
 </div>
+<ng-template #semArtigos>
+  <h2>Nenhum artigo encontrado</h2>
+</ng-template>
     </div>
 
    
