@@ -5,7 +5,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import { AppServiceService } from './services/app-service.service';
-import { map, Observable } from 'rxjs';
+import { catchError, map, Observable, of } from 'rxjs';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 
@@ -30,7 +30,12 @@ export class AppComponent {
   constructor(private appService: AppServiceService, private snackBar: MatSnackBar) {}
 
   ngOnInit(): void {
-    this.artigos$ = this.appService.onSearch();
+    this.artigos$ = this.appService.onSearch().pipe(
+      catchError(err => {
+        console.error('Erro ao buscar artigos:', err);
+        return of([]);
+      })
+    );
     this.onSearch();
   }
 
